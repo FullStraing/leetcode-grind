@@ -2,7 +2,9 @@
 import unittest
 
 from solutions.binary_search import search
+from solutions.contains_duplicate import contains_duplicate
 from solutions.group_anagrams import group_anagrams
+from solutions.longest_substring import length_of_longest_substring
 from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
@@ -50,6 +52,31 @@ class TestBinarySearch(unittest.TestCase):
     def test_edges(self):
         self.assertEqual(search([5], 5), 0)
         self.assertEqual(search([5], -5), -1)
+
+
+class TestContainsDuplicate(unittest.TestCase):
+    def test_duplicate(self):
+        self.assertTrue(contains_duplicate([1, 2, 3, 1]))
+
+    def test_all_distinct(self):
+        self.assertFalse(contains_duplicate([1, 2, 3, 4]))
+
+    def test_empty(self):
+        self.assertFalse(contains_duplicate([]))
+
+
+class TestLongestSubstring(unittest.TestCase):
+    def test_abcabcbb(self):
+        self.assertEqual(length_of_longest_substring("abcabcbb"), 3)
+
+    def test_all_same(self):
+        self.assertEqual(length_of_longest_substring("bbbbb"), 1)
+
+    def test_pwwkew(self):
+        self.assertEqual(length_of_longest_substring("pwwkew"), 3)
+
+    def test_empty(self):
+        self.assertEqual(length_of_longest_substring(""), 0)
 
 
 class TestTwoSumII(unittest.TestCase):

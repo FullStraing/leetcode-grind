@@ -6,9 +6,9 @@ blank page without hints.
 
 | # | Pattern | Status |
 |---|---------|--------|
-| 1 | HashMap | In progress — Two Sum, Valid Anagram, Group Anagrams |
+| 1 | HashMap | Done — Two Sum, Valid Anagram, Group Anagrams, Contains Duplicate |
 | 2 | Two Pointers | In progress — Two Sum II |
-| 3 | Sliding Window | Next up |
+| 3 | Sliding Window | In progress — Longest Substring Without Repeating Characters |
 | 4 | Binary Search | In progress — Binary Search |
 | 5 | Stack | Planned |
 | 6 | Linked List | Planned |

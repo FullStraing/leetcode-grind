@@ -55,8 +55,10 @@ Next to practise: sliding-window
 | # | Problem | Difficulty | Pattern | Approach in one line |
 |---|---------|-----------|---------|----------------------|
 | 1 | [Two Sum](solutions/two_sum.py) | Easy | HashMap | One pass, look up `target - num` |
+| 3 | [Longest Substring Without Repeating Characters](solutions/longest_substring.py) | Medium | Sliding Window | Window expands right, jumps left past repeats |
 | 49 | [Group Anagrams](solutions/group_anagrams.py) | Medium | HashMap | Bucket words by their sorted letters |
 | 167 | [Two Sum II](solutions/two_sum_ii.py) | Medium | Two Pointers | Sorted array: pointers from both ends |
+| 217 | [Contains Duplicate](solutions/contains_duplicate.py) | Easy | HashMap | One pass, remember what was seen |
 | 242 | [Valid Anagram](solutions/valid_anagram.py) | Easy | HashMap | Count letters of one, spend on the other |
 | 704 | [Binary Search](solutions/binary_search.py) | Easy | Binary Search | Halve the interval every step |
 
@@ -73,6 +75,8 @@ leetcode-grind/
 │   ├── two_sum.py
 │   ├── valid_anagram.py
 │   ├── group_anagrams.py
+│   ├── contains_duplicate.py
+│   ├── longest_substring.py
 │   ├── binary_search.py
 │   └── two_sum_ii.py
 ├── test_solutions.py  ← tests for every solution
