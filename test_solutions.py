@@ -8,6 +8,7 @@ from solutions.longest_substring import length_of_longest_substring
 from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
+from solutions.valid_palindrome import is_palindrome
 
 
 class TestTwoSum(unittest.TestCase):
@@ -85,6 +86,21 @@ class TestTwoSumII(unittest.TestCase):
 
     def test_negative(self):
         self.assertEqual(two_sum_ii([-10, -3, 0, 5], -13), [1, 2])
+
+
+class TestValidPalindrome(unittest.TestCase):
+    def test_classic(self):
+        self.assertTrue(is_palindrome("A man, a plan, a canal: Panama"))
+
+    def test_not_palindrome(self):
+        self.assertFalse(is_palindrome("race a car"))
+
+    def test_only_spaces(self):
+        self.assertTrue(is_palindrome(" "))
+
+    def test_digits(self):
+        self.assertTrue(is_palindrome("1a1"))
+        self.assertFalse(is_palindrome("0P"))
 
 
 if __name__ == "__main__":
