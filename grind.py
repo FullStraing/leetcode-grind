@@ -14,6 +14,8 @@ Examples:
     python grind.py stats
     python grind.py next
     python grind.py review
+    python grind.py export          # Markdown summary of the grind so far
+    python grind.py export --file SUMMARY.md
 """
 
 from __future__ import annotations
@@ -161,6 +163,48 @@ def cmd_next(_: argparse.Namespace) -> int:
     return 0
 
 
+def export_summary(entries: list[dict]) -> str:
+    """Markdown summary of the grind so far — paste it anywhere."""
+    s = stats(entries)
+    lines = ["# LeetCode grind — summary", ""]
+    lines.append(f"Total solved: **{s['total']}**")
+    lines.append(f"Current streak: **{s['current_streak']} day(s)** · "
+                 f"Longest: **{s['longest_streak']} day(s)**")
+    lines.append("")
+    lines.append("## By difficulty")
+    lines.append("")
+    for d in DIFFICULTIES:
+        lines.append(f"- {d}: {s['by_difficulty'][d]}")
+    lines.append("")
+    lines.append("## By pattern")
+    lines.append("")
+    for pattern, count in s["by_pattern"].items():
+        lines.append(f"- {pattern}: {count}")
+    for pattern in PATTERNS:
+        if pattern not in s["by_pattern"]:
+            lines.append(f"- {pattern}: 0")
+    lines.append("")
+    lines.append(f"Next to practise: **{s['next_pattern']}**")
+    if s["review_queue"]:
+        lines.append("")
+        lines.append("## Review queue")
+        lines.append("")
+        for title in s["review_queue"]:
+            lines.append(f"- [ ] {title}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def cmd_export(args: argparse.Namespace) -> int:
+    text = export_summary(load_entries())
+    if args.file:
+        Path(args.file).write_text(text, encoding="utf-8")
+        print(f"Wrote summary to {args.file}")
+    else:
+        print(text, end="")
+    return 0
+
+
 def cmd_review(_: argparse.Namespace) -> int:
     queue = stats(load_entries())["review_queue"]
     if not queue:
@@ -192,6 +236,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     r = sub.add_parser("review", help="show the re-solve queue")
     r.set_defaults(func=cmd_review)
+
+    e = sub.add_parser("export", help="print a Markdown summary of the grind")
+    e.add_argument("--file", default=None, help="write the summary to a file")
+    e.set_defaults(func=cmd_export)
     return p
 
 

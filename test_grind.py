@@ -53,5 +53,27 @@ class TestSuggestion(unittest.TestCase):
         self.assertEqual(s["review_queue"], ["Two Sum"])
 
 
+class TestExport(unittest.TestCase):
+    def test_summary_counts_and_sections(self):
+        entries = [entry(0, "hashmap", "Two Sum", "easy"),
+                   entry(1, "hashmap", "Valid Anagram", "easy", review=True),
+                   entry(2, "binary-search", "Binary Search", "easy")]
+        text = grind.export_summary(entries)
+        self.assertIn("Total solved: **3**", text)
+        self.assertIn("Current streak: **3 day(s)**", text)
+        self.assertIn("- easy: 3", text)
+        self.assertIn("- hashmap: 2", text)
+        self.assertIn("- binary-search: 1", text)
+        self.assertIn("- stack: 0", text)
+        self.assertIn("Next to practise: **two-pointers**", text)
+        self.assertIn("- [ ] Valid Anagram", text)
+
+    def test_empty_summary(self):
+        text = grind.export_summary([])
+        self.assertIn("Total solved: **0**", text)
+        self.assertIn("Current streak: **0 day(s)**", text)
+        self.assertNotIn("Review queue", text)
+
+
 if __name__ == "__main__":
     unittest.main()
