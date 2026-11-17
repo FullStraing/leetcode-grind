@@ -7,10 +7,10 @@ blank page without hints.
 | # | Pattern | Status |
 |---|---------|--------|
 | 1 | HashMap | Done — Two Sum, Valid Anagram, Group Anagrams, Contains Duplicate |
-| 2 | Two Pointers | In progress — Two Sum II |
-| 3 | Sliding Window | In progress — Longest Substring Without Repeating Characters |
-| 4 | Binary Search | In progress — Binary Search |
-| 5 | Stack | Planned |
+| 2 | Two Pointers | Done — Two Sum II, Valid Palindrome, Container With Most Water |
+| 3 | Sliding Window | Done — Longest Substring Without Repeating Characters, Minimum Size Subarray Sum, Longest Repeating Character Replacement |
+| 4 | Binary Search | Done — Binary Search, Search Insert Position, First Bad Version, Sqrt(x) |
+| 5 | Stack | In progress — Valid Parentheses |
 | 6 | Linked List | Planned |
 | 7 | Trees (DFS / BFS) | Planned |
 | 8 | Graphs | Planned |
