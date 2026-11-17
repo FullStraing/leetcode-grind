@@ -4,6 +4,7 @@ import unittest
 from solutions.binary_search import search
 from solutions.container_with_most_water import max_area
 from solutions.contains_duplicate import contains_duplicate
+from solutions.first_bad_version import first_bad_version
 from solutions.group_anagrams import group_anagrams
 from solutions.longest_substring import length_of_longest_substring
 from solutions.minimum_size_subarray_sum import min_sub_array_len
@@ -138,6 +139,17 @@ class TestSearchInsertPosition(unittest.TestCase):
     def test_ends(self):
         self.assertEqual(search_insert([1, 3, 5, 6], 7), 4)
         self.assertEqual(search_insert([1, 3, 5, 6], 0), 0)
+
+
+class TestFirstBadVersion(unittest.TestCase):
+    def test_middle(self):
+        self.assertEqual(first_bad_version(5, lambda v: v >= 4), 4)
+
+    def test_first_is_bad(self):
+        self.assertEqual(first_bad_version(1, lambda v: True), 1)
+
+    def test_last_is_bad(self):
+        self.assertEqual(first_bad_version(3, lambda v: v >= 3), 3)
 
 
 if __name__ == "__main__":
