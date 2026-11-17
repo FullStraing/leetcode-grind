@@ -6,6 +6,7 @@ from solutions.container_with_most_water import max_area
 from solutions.contains_duplicate import contains_duplicate
 from solutions.first_bad_version import first_bad_version
 from solutions.group_anagrams import group_anagrams
+from solutions.longest_repeating_character_replacement import character_replacement
 from solutions.longest_substring import length_of_longest_substring
 from solutions.minimum_size_subarray_sum import min_sub_array_len
 from solutions.search_insert_position import search_insert
@@ -181,6 +182,20 @@ class TestValidParentheses(unittest.TestCase):
 
     def test_nested(self):
         self.assertTrue(is_valid("{[]}"))
+
+
+class TestLongestRepeatingCharacterReplacement(unittest.TestCase):
+    def test_abab(self):
+        self.assertEqual(character_replacement("ABAB", 2), 4)
+
+    def test_aababba(self):
+        self.assertEqual(character_replacement("AABABBA", 1), 4)
+
+    def test_no_replacements(self):
+        self.assertEqual(character_replacement("AAAA", 0), 4)
+
+    def test_abbb(self):
+        self.assertEqual(character_replacement("ABBB", 2), 4)
 
 
 if __name__ == "__main__":
