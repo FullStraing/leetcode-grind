@@ -7,6 +7,7 @@ from solutions.contains_duplicate import contains_duplicate
 from solutions.group_anagrams import group_anagrams
 from solutions.longest_substring import length_of_longest_substring
 from solutions.minimum_size_subarray_sum import min_sub_array_len
+from solutions.search_insert_position import search_insert
 from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
@@ -125,6 +126,18 @@ class TestMinimumSizeSubarraySum(unittest.TestCase):
 
     def test_no_subarray(self):
         self.assertEqual(min_sub_array_len(11, [1, 1, 1, 1, 1]), 0)
+
+
+class TestSearchInsertPosition(unittest.TestCase):
+    def test_found(self):
+        self.assertEqual(search_insert([1, 3, 5, 6], 5), 2)
+
+    def test_between(self):
+        self.assertEqual(search_insert([1, 3, 5, 6], 2), 1)
+
+    def test_ends(self):
+        self.assertEqual(search_insert([1, 3, 5, 6], 7), 4)
+        self.assertEqual(search_insert([1, 3, 5, 6], 0), 0)
 
 
 if __name__ == "__main__":
