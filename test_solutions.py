@@ -9,6 +9,7 @@ from solutions.group_anagrams import group_anagrams
 from solutions.longest_substring import length_of_longest_substring
 from solutions.minimum_size_subarray_sum import min_sub_array_len
 from solutions.search_insert_position import search_insert
+from solutions.sqrt_x import my_sqrt
 from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
@@ -150,6 +151,21 @@ class TestFirstBadVersion(unittest.TestCase):
 
     def test_last_is_bad(self):
         self.assertEqual(first_bad_version(3, lambda v: v >= 3), 3)
+
+
+class TestSqrtX(unittest.TestCase):
+    def test_perfect(self):
+        self.assertEqual(my_sqrt(4), 2)
+
+    def test_rounds_down(self):
+        self.assertEqual(my_sqrt(8), 2)
+
+    def test_small(self):
+        self.assertEqual(my_sqrt(0), 0)
+        self.assertEqual(my_sqrt(1), 1)
+
+    def test_large(self):
+        self.assertEqual(my_sqrt(2147395599), 46339)
 
 
 if __name__ == "__main__":
