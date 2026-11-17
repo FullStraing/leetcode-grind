@@ -6,6 +6,7 @@ from solutions.container_with_most_water import max_area
 from solutions.contains_duplicate import contains_duplicate
 from solutions.group_anagrams import group_anagrams
 from solutions.longest_substring import length_of_longest_substring
+from solutions.minimum_size_subarray_sum import min_sub_array_len
 from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
@@ -113,6 +114,17 @@ class TestContainerWithMostWater(unittest.TestCase):
 
     def test_tall_ends(self):
         self.assertEqual(max_area([4, 3, 2, 1, 4]), 16)
+
+
+class TestMinimumSizeSubarraySum(unittest.TestCase):
+    def test_classic(self):
+        self.assertEqual(min_sub_array_len(7, [2, 3, 1, 2, 4, 3]), 2)
+
+    def test_single_element(self):
+        self.assertEqual(min_sub_array_len(4, [1, 4, 4]), 1)
+
+    def test_no_subarray(self):
+        self.assertEqual(min_sub_array_len(11, [1, 1, 1, 1, 1]), 0)
 
 
 if __name__ == "__main__":
