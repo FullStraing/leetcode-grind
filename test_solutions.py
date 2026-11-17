@@ -14,6 +14,7 @@ from solutions.two_sum import two_sum
 from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
 from solutions.valid_palindrome import is_palindrome
+from solutions.valid_parentheses import is_valid
 
 
 class TestTwoSum(unittest.TestCase):
@@ -166,6 +167,20 @@ class TestSqrtX(unittest.TestCase):
 
     def test_large(self):
         self.assertEqual(my_sqrt(2147395599), 46339)
+
+
+class TestValidParentheses(unittest.TestCase):
+    def test_valid(self):
+        self.assertTrue(is_valid("()[]{}"))
+
+    def test_wrong_type(self):
+        self.assertFalse(is_valid("(]"))
+
+    def test_wrong_order(self):
+        self.assertFalse(is_valid("([)]"))
+
+    def test_nested(self):
+        self.assertTrue(is_valid("{[]}"))
 
 
 if __name__ == "__main__":
