@@ -2,6 +2,7 @@
 import unittest
 
 from solutions.binary_search import search
+from solutions.container_with_most_water import max_area
 from solutions.contains_duplicate import contains_duplicate
 from solutions.group_anagrams import group_anagrams
 from solutions.longest_substring import length_of_longest_substring
@@ -101,6 +102,17 @@ class TestValidPalindrome(unittest.TestCase):
     def test_digits(self):
         self.assertTrue(is_palindrome("1a1"))
         self.assertFalse(is_palindrome("0P"))
+
+
+class TestContainerWithMostWater(unittest.TestCase):
+    def test_classic(self):
+        self.assertEqual(max_area([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
+
+    def test_two_lines(self):
+        self.assertEqual(max_area([1, 1]), 1)
+
+    def test_tall_ends(self):
+        self.assertEqual(max_area([4, 3, 2, 1, 4]), 16)
 
 
 if __name__ == "__main__":
