@@ -10,7 +10,7 @@ blank page without hints.
 | 2 | Two Pointers | Done — Two Sum II, Valid Palindrome, Container With Most Water |
 | 3 | Sliding Window | Done — Longest Substring Without Repeating Characters, Minimum Size Subarray Sum, Longest Repeating Character Replacement |
 | 4 | Binary Search | Done — Binary Search, Search Insert Position, First Bad Version, Sqrt(x) |
-| 5 | Stack | In progress — Valid Parentheses |
+| 5 | Stack | Done — Valid Parentheses, Min Stack, Evaluate RPN, Daily Temperatures, Asteroid Collision, Remove Adjacent Duplicates, Decode String, Backspace Compare, Simplify Path |
 | 6 | Linked List | Planned |
 | 7 | Trees (DFS / BFS) | Planned |
 | 8 | Graphs | Planned |
