@@ -34,6 +34,7 @@ python grind.py add "Group Anagrams" medium hashmap --minutes 25 --review
 python grind.py stats
 python grind.py next      # which pattern to practise next
 python grind.py review    # problems flagged for re-solving
+python grind.py review --done "Two Sum"  # mark a problem as reviewed
 python grind.py export    # Markdown summary of the grind so far
 
 # run all tests (tracker + every solution)
@@ -63,14 +64,22 @@ Next to practise: sliding-window
 | 35 | [Search Insert Position](solutions/search_insert_position.py) | Easy | Binary Search | `left` ends at the insertion point |
 | 49 | [Group Anagrams](solutions/group_anagrams.py) | Medium | HashMap | Bucket words by their sorted letters |
 | 69 | [Sqrt(x)](solutions/sqrt_x.py) | Easy | Binary Search | Search the answer; keep the largest square ≤ x |
+| 71 | [Simplify Path](solutions/simplify_path.py) | Medium | Stack | Stack the real directories; `..` pops |
 | 125 | [Valid Palindrome](solutions/valid_palindrome.py) | Easy | Two Pointers | Pointers from both ends, skip non-alphanumerics |
+| 150 | [Evaluate Reverse Polish Notation](solutions/evaluate_rpn.py) | Medium | Stack | Operands on a stack; operators pop two, push one |
+| 155 | [Min Stack](solutions/min_stack.py) | Easy | Stack | A second stack tracks the running minimum |
 | 167 | [Two Sum II](solutions/two_sum_ii.py) | Medium | Two Pointers | Sorted array: pointers from both ends |
 | 209 | [Minimum Size Subarray Sum](solutions/minimum_size_subarray_sum.py) | Medium | Sliding Window | Expand right, shrink left while sum ≥ target |
 | 217 | [Contains Duplicate](solutions/contains_duplicate.py) | Easy | HashMap | One pass, remember what was seen |
 | 242 | [Valid Anagram](solutions/valid_anagram.py) | Easy | HashMap | Count letters of one, spend on the other |
 | 278 | [First Bad Version](solutions/first_bad_version.py) | Easy | Binary Search | Halve on the answer; bad means at-or-before |
+| 394 | [Decode String](solutions/decode_string.py) | Medium | Stack | Two stacks: counts and the strings built so far |
 | 424 | [Longest Repeating Character Replacement](solutions/longest_repeating_character_replacement.py) | Medium | Sliding Window | Keep the most frequent letter, replace the rest |
 | 704 | [Binary Search](solutions/binary_search.py) | Easy | Binary Search | Halve the interval every step |
+| 735 | [Asteroid Collision](solutions/asteroid_collision.py) | Medium | Stack | Survivors stack; left-movers fight the top |
+| 739 | [Daily Temperatures](solutions/daily_temperatures.py) | Medium | Stack | Monotonic stack of indices waiting for warmth |
+| 844 | [Backspace String Compare](solutions/backspace_compare.py) | Easy | Stack | Build each reduced string, then compare |
+| 1047 | [Remove All Adjacent Duplicates In String](solutions/remove_adjacent_duplicates.py) | Easy | Stack | Equal neighbours cancel off the top |
 
 New solutions land daily — see [`PROGRESS.md`](PROGRESS.md).
 
@@ -96,7 +105,15 @@ leetcode-grind/
 │   ├── first_bad_version.py
 │   ├── sqrt_x.py
 │   ├── valid_parentheses.py
-│   └── longest_repeating_character_replacement.py
+│   ├── longest_repeating_character_replacement.py
+│   ├── min_stack.py
+│   ├── evaluate_rpn.py
+│   ├── daily_temperatures.py
+│   ├── asteroid_collision.py
+│   ├── remove_adjacent_duplicates.py
+│   ├── decode_string.py
+│   ├── backspace_compare.py
+│   └── simplify_path.py
 ├── test_solutions.py  ← tests for every solution
 ├── ROADMAP.md         ← the 12 patterns, in order, with status
 └── PROGRESS.md        ← dated daily log — the streak, in writing
