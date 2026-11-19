@@ -75,5 +75,19 @@ class TestExport(unittest.TestCase):
         self.assertNotIn("Review queue", text)
 
 
+class TestReviewDone(unittest.TestCase):
+    def test_mark_reviewed_clears_flag(self):
+        entries = [entry(0, review=True), entry(1, title="Valid Anagram")]
+        self.assertTrue(grind.mark_reviewed(entries, "two sum"))
+        self.assertFalse(entries[0]["review"])
+        self.assertEqual(grind.stats(entries)["review_queue"], [])
+
+    def test_mark_reviewed_missing(self):
+        entries = [entry(0, review=True)]
+        self.assertFalse(grind.mark_reviewed(entries, "Binary Search"))
+        self.assertFalse(grind.mark_reviewed(entries, "Two Sum".replace("Two", "Three")))
+        self.assertTrue(entries[0]["review"])
+
+
 if __name__ == "__main__":
     unittest.main()

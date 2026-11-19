@@ -14,6 +14,7 @@ Examples:
     python grind.py stats
     python grind.py next
     python grind.py review
+    python grind.py review --done "Two Sum"   # mark a problem reviewed
     python grind.py export          # Markdown summary of the grind so far
     python grind.py export --file SUMMARY.md
 """
@@ -205,8 +206,30 @@ def cmd_export(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_review(_: argparse.Namespace) -> int:
-    queue = stats(load_entries())["review_queue"]
+def mark_reviewed(entries: list[dict], title: str) -> bool:
+    """Clear the review flag of the first entry matching title.
+
+    Matching is case-insensitive. Returns True when an entry was
+    cleared, False when nothing in the review queue matched.
+    """
+    wanted = title.strip().lower()
+    for e in entries:
+        if e["title"].lower() == wanted and e.get("review"):
+            e["review"] = False
+            return True
+    return False
+
+
+def cmd_review(args: argparse.Namespace) -> int:
+    entries = load_entries()
+    if args.done:
+        if mark_reviewed(entries, args.done):
+            save_entries(entries)
+            print(f"Reviewed: {args.done} — cleared from the re-solve queue.")
+            return 0
+        print(f"Not in the review queue: {args.done}", file=sys.stderr)
+        return 1
+    queue = stats(entries)["review_queue"]
     if not queue:
         print("Review queue is empty. Flag a problem with --review when you add it.")
         return 0
@@ -235,6 +258,8 @@ def build_parser() -> argparse.ArgumentParser:
     n.set_defaults(func=cmd_next)
 
     r = sub.add_parser("review", help="show the re-solve queue")
+    r.add_argument("--done", default=None, metavar="TITLE",
+                   help="mark a problem as reviewed and remove it from the queue")
     r.set_defaults(func=cmd_review)
 
     e = sub.add_parser("export", help="print a Markdown summary of the grind")
