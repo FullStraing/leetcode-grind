@@ -17,6 +17,7 @@ from solutions.valid_anagram import is_anagram
 from solutions.valid_palindrome import is_palindrome
 from solutions.valid_parentheses import is_valid
 from solutions.min_stack import MinStack
+from solutions.evaluate_rpn import eval_rpn
 
 
 class TestTwoSum(unittest.TestCase):
@@ -224,6 +225,22 @@ class TestMinStack(unittest.TestCase):
         s.push(7)
         self.assertEqual(s.top(), 7)
         self.assertEqual(s.get_min(), 7)
+
+class TestEvaluateRPN(unittest.TestCase):
+    def test_add_mul(self):
+        self.assertEqual(eval_rpn(["2", "1", "+", "3", "*"]), 9)
+
+    def test_div_add(self):
+        self.assertEqual(eval_rpn(["4", "13", "5", "/", "+"]), 6)
+
+    def test_truncates_toward_zero(self):
+        self.assertEqual(eval_rpn(["-13", "5", "/"]), -2)
+        self.assertEqual(eval_rpn(["13", "-5", "/"]), -2)
+
+    def test_long_expression(self):
+        self.assertEqual(
+            eval_rpn(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]),
+            22)
 
 
 if __name__ == "__main__":
