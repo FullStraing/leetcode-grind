@@ -16,6 +16,7 @@ from solutions.two_sum_ii import two_sum_ii
 from solutions.valid_anagram import is_anagram
 from solutions.valid_palindrome import is_palindrome
 from solutions.valid_parentheses import is_valid
+from solutions.min_stack import MinStack
 
 
 class TestTwoSum(unittest.TestCase):
@@ -196,6 +197,33 @@ class TestLongestRepeatingCharacterReplacement(unittest.TestCase):
 
     def test_abbb(self):
         self.assertEqual(character_replacement("ABBB", 2), 4)
+
+class TestMinStack(unittest.TestCase):
+    def test_basic_flow(self):
+        s = MinStack()
+        s.push(-2)
+        s.push(0)
+        s.push(-3)
+        self.assertEqual(s.get_min(), -3)
+        s.pop()
+        self.assertEqual(s.top(), 0)
+        self.assertEqual(s.get_min(), -2)
+
+    def test_min_updates(self):
+        s = MinStack()
+        s.push(5)
+        s.push(1)
+        s.push(4)
+        self.assertEqual(s.get_min(), 1)
+        s.pop()
+        s.pop()
+        self.assertEqual(s.get_min(), 5)
+
+    def test_single(self):
+        s = MinStack()
+        s.push(7)
+        self.assertEqual(s.top(), 7)
+        self.assertEqual(s.get_min(), 7)
 
 
 if __name__ == "__main__":
