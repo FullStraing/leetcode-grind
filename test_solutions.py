@@ -23,6 +23,7 @@ from solutions.asteroid_collision import asteroid_collision
 from solutions.remove_adjacent_duplicates import remove_duplicates
 from solutions.decode_string import decode_string
 from solutions.backspace_compare import backspace_compare
+from solutions.simplify_path import simplify_path
 
 
 class TestTwoSum(unittest.TestCase):
@@ -313,6 +314,19 @@ class TestBackspaceCompare(unittest.TestCase):
 
     def test_leading_backspaces(self):
         self.assertTrue(backspace_compare("a##c", "#a#c"))
+
+class TestSimplifyPath(unittest.TestCase):
+    def test_trailing_slash(self):
+        self.assertEqual(simplify_path("/home/"), "/home")
+
+    def test_above_root(self):
+        self.assertEqual(simplify_path("/../"), "/")
+
+    def test_dots_and_doubles(self):
+        self.assertEqual(simplify_path("/home//foo/./bar/../baz"), "/home/foo/baz")
+
+    def test_double_up(self):
+        self.assertEqual(simplify_path("/a/./b/../../c/"), "/c")
 
 
 if __name__ == "__main__":
