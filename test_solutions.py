@@ -19,6 +19,7 @@ from solutions.valid_parentheses import is_valid
 from solutions.min_stack import MinStack
 from solutions.evaluate_rpn import eval_rpn
 from solutions.daily_temperatures import daily_temperatures
+from solutions.asteroid_collision import asteroid_collision
 
 
 class TestTwoSum(unittest.TestCase):
@@ -257,6 +258,19 @@ class TestDailyTemperatures(unittest.TestCase):
 
     def test_decreasing(self):
         self.assertEqual(daily_temperatures([90, 80, 70]), [0, 0, 0])
+
+class TestAsteroidCollision(unittest.TestCase):
+    def test_smaller_explodes(self):
+        self.assertEqual(asteroid_collision([5, 10, -5]), [5, 10])
+
+    def test_equal_explode(self):
+        self.assertEqual(asteroid_collision([8, -8]), [])
+
+    def test_chain_collision(self):
+        self.assertEqual(asteroid_collision([10, 2, -5]), [10])
+
+    def test_no_collisions(self):
+        self.assertEqual(asteroid_collision([-2, -1, 1, 2]), [-2, -1, 1, 2])
 
 
 if __name__ == "__main__":
