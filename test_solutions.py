@@ -21,6 +21,7 @@ from solutions.evaluate_rpn import eval_rpn
 from solutions.daily_temperatures import daily_temperatures
 from solutions.asteroid_collision import asteroid_collision
 from solutions.remove_adjacent_duplicates import remove_duplicates
+from solutions.decode_string import decode_string
 
 
 class TestTwoSum(unittest.TestCase):
@@ -285,6 +286,19 @@ class TestRemoveAdjacentDuplicates(unittest.TestCase):
 
     def test_none(self):
         self.assertEqual(remove_duplicates("abc"), "abc")
+
+class TestDecodeString(unittest.TestCase):
+    def test_two_groups(self):
+        self.assertEqual(decode_string("3[a]2[bc]"), "aaabcbc")
+
+    def test_nested(self):
+        self.assertEqual(decode_string("3[a2[c]]"), "accaccacc")
+
+    def test_trailing_plain(self):
+        self.assertEqual(decode_string("2[abc]3[cd]ef"), "abcabccdcdcdef")
+
+    def test_multi_digit(self):
+        self.assertEqual(decode_string("10[a]"), "a" * 10)
 
 
 if __name__ == "__main__":
