@@ -20,6 +20,7 @@ from solutions.min_stack import MinStack
 from solutions.evaluate_rpn import eval_rpn
 from solutions.daily_temperatures import daily_temperatures
 from solutions.asteroid_collision import asteroid_collision
+from solutions.remove_adjacent_duplicates import remove_duplicates
 
 
 class TestTwoSum(unittest.TestCase):
@@ -271,6 +272,19 @@ class TestAsteroidCollision(unittest.TestCase):
 
     def test_no_collisions(self):
         self.assertEqual(asteroid_collision([-2, -1, 1, 2]), [-2, -1, 1, 2])
+
+class TestRemoveAdjacentDuplicates(unittest.TestCase):
+    def test_abbaca(self):
+        self.assertEqual(remove_duplicates("abbaca"), "ca")
+
+    def test_azxxzy(self):
+        self.assertEqual(remove_duplicates("azxxzy"), "ay")
+
+    def test_chain(self):
+        self.assertEqual(remove_duplicates("aababaab"), "ba")
+
+    def test_none(self):
+        self.assertEqual(remove_duplicates("abc"), "abc")
 
 
 if __name__ == "__main__":
