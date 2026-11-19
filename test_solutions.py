@@ -22,6 +22,7 @@ from solutions.daily_temperatures import daily_temperatures
 from solutions.asteroid_collision import asteroid_collision
 from solutions.remove_adjacent_duplicates import remove_duplicates
 from solutions.decode_string import decode_string
+from solutions.backspace_compare import backspace_compare
 
 
 class TestTwoSum(unittest.TestCase):
@@ -299,6 +300,19 @@ class TestDecodeString(unittest.TestCase):
 
     def test_multi_digit(self):
         self.assertEqual(decode_string("10[a]"), "a" * 10)
+
+class TestBackspaceCompare(unittest.TestCase):
+    def test_equal_after_backspace(self):
+        self.assertTrue(backspace_compare("ab#c", "ad#c"))
+
+    def test_both_empty(self):
+        self.assertTrue(backspace_compare("ab##", "c#d#"))
+
+    def test_not_equal(self):
+        self.assertFalse(backspace_compare("a#c", "b"))
+
+    def test_leading_backspaces(self):
+        self.assertTrue(backspace_compare("a##c", "#a#c"))
 
 
 if __name__ == "__main__":
