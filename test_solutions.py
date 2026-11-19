@@ -18,6 +18,7 @@ from solutions.valid_palindrome import is_palindrome
 from solutions.valid_parentheses import is_valid
 from solutions.min_stack import MinStack
 from solutions.evaluate_rpn import eval_rpn
+from solutions.daily_temperatures import daily_temperatures
 
 
 class TestTwoSum(unittest.TestCase):
@@ -241,6 +242,21 @@ class TestEvaluateRPN(unittest.TestCase):
         self.assertEqual(
             eval_rpn(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]),
             22)
+
+class TestDailyTemperatures(unittest.TestCase):
+    def test_example(self):
+        self.assertEqual(
+            daily_temperatures([73, 74, 75, 71, 69, 72, 76, 73]),
+            [1, 1, 4, 2, 1, 1, 0, 0])
+
+    def test_increasing(self):
+        self.assertEqual(daily_temperatures([30, 40, 50, 60]), [1, 1, 1, 0])
+
+    def test_single(self):
+        self.assertEqual(daily_temperatures([30]), [0])
+
+    def test_decreasing(self):
+        self.assertEqual(daily_temperatures([90, 80, 70]), [0, 0, 0])
 
 
 if __name__ == "__main__":
